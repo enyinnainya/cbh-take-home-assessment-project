@@ -8,8 +8,8 @@ exports.deterministicPartitionKey = (event) => {
   //declaring and initializing constant variable TRIVIAL_PARTITION_KEY
   const TRIVIAL_PARTITION_KEY = "0";
 
-  //declaring variable to hold the return value and  default it to the TRIVIAL_PARTITION_KEY value
-  let candidate = TRIVIAL_PARTITION_KEY;
+  //declaring variable to hold the return value
+  let candidate;
 
   //Checking if function was called with an argument and process the following logic if true
   if (event) {
@@ -27,6 +27,11 @@ exports.deterministicPartitionKey = (event) => {
       candidate = updatedHash.digest("hex");
 
     }
+  }
+
+  //if candidate has no computed value,  default it to the TRIVIAL_PARTITION_KEY value
+  if(!candidate){
+    candidate = TRIVIAL_PARTITION_KEY;
   }
 
   /*

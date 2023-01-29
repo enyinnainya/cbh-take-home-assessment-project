@@ -11,7 +11,7 @@ describe("deterministicPartitionKey", () => {
    * if literal character length is not above 256
    */
   it("Returns the same literal provided in the input object key 'partitionKey' if literal character length is not above 256", () => {
-    const literal=234513;
+    const literal=34222233;
     const trivialKey = deterministicPartitionKey({partitionKey: literal});
     expect(trivialKey).toBe(JSON.stringify(literal));
   });
@@ -20,7 +20,7 @@ describe("deterministicPartitionKey", () => {
    * or is an object but does not contain the object key 'partitionKey' whose literal character length is not above 256
    */
   it("Returns the correct hashed value if provided input is not an object or is an object but does not contain the object key 'partitionKey' whose literal character length is not above 256", () => {
-    const literal=234513;
+    const literal=34222233;
     const trivialKey = deterministicPartitionKey(literal);
 
     //creating cryto hash with sha3-512 algorithm
